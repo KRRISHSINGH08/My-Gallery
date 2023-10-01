@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper{
+    width: 100vw;
+    height: 100vh;
+    overflow-x:hidden;
+    overflow-y: auto;
+    background-color: #f4f4f4;
+    font-family: "Poppins", sans-serif;
+}
+
+.heading{
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.container{
+    width: 60vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: flex-end;
+    gap: 1.4rem;
+}
+
+
+.img{
+    width: 15rem;
+    height: 16rem;
+    border-radius: 6px;
+    filter: grayscale(100%);
+}
+
+.img:hover{
+    filter:none;
+    transform: scale(103%);
+    transition-delay: 0.5sec;
+    box-shadow: 0 0 10px black;
+}
+    
+figcaption{
+    position: relative;
+    top: -35px;
+    left: 10px;
+    color: white;
+    opacity: 0;
+}
+/* Note: above figcaption opacity 0, now on hovering over card figcaption opacity will become 1. we can't give this to our img tag that will make img tag opacity 1 not of figcaption  */
+/* descendant selector */
+.card:hover figcaption{
+    visibility: visible;
+    cursor: pointer;
+    opacity: 1;
+}

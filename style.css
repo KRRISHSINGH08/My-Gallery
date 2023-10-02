@@ -14,50 +14,88 @@
     font-family: "Poppins", sans-serif;
 }
 
-.heading{
-    height: 7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 600;
-}
-
 .container{
-    width: 60vw;
-    margin: auto;
+    height: 100%;
+/* Center container */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: flex-end;
-    gap: 1.4rem;
+    gap: 1.4rem; */
+}
+
+.container h1{
+    margin: 20px 0;
+    text-align: center;
+    font-size: 2.5rem;
+    /* Or we could have used this also */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.gallery{
+    width: 70%;
+    margin: 0 auto;
+    /* Why flex -> For positioning all cards and space between them easily */
+    /* flex-container */
+    display: flex;
+    /* Without this all ele will come in single row (flexdirection: row by default) */
+    flex-wrap: wrap;
+    /* To set space between every card vimp!*/
+    justify-content: space-between;
+    /* row-gap: 20px; */
 }
 
 
-.img{
-    width: 15rem;
-    height: 16rem;
-    border-radius: 6px;
+.card{
+    /* width of each card in a row. like 3 cards -> total 96% remaining space between them set above..*/
+    width: 32%;
+    /* To overlap figcaption */
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    /* if image overflow beyound card width. Vimp!! */
+    overflow: hidden;
+}
+
+.card img{
+    /* Now image wt & ht will be that of card. we get squarish image with bottom rounded corner*/
+    /* Flex-item take full height  upto containerif we don't specify. */
+    width: 100%;
+    height: 100%;
     filter: grayscale(100%);
 }
 
-.img:hover{
-    filter:none;
-    transform: scale(103%);
-    transition-delay: 0.5sec;
-    box-shadow: 0 0 10px black;
+.card:hover{
+    transform: scale(1.03);
+    transition: 0.5s;
+    /* box-shadow: 0 0 20px #333; */
+    /* Better than box-shadow */
+    filter: drop-shadow(0 0 10px #333);
 }
-    
-figcaption{
-    position: relative;
-    top: -35px;
-    left: 10px;
-    color: white;
+
+.card:hover img{
+    filter:none;
+}
+
+.card figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    color: #fff;
+    font-weight: 500;
     opacity: 0;
+    transition: 0.5s;
 }
 /* Note: above figcaption opacity 0, now on hovering over card figcaption opacity will become 1. we can't give this to our img tag that will make img tag opacity 1 not of figcaption  */
 /* descendant selector */
 .card:hover figcaption{
-    visibility: visible;
-    cursor: pointer;
     opacity: 1;
+    /* scale text along with image */
+    transform: scale(1.03);
 }
